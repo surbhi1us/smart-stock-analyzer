@@ -72,19 +72,6 @@ venv\Scripts\activate         # Windows
 pip install -r requirements.txt
 ```
 
-**Sample `requirements.txt`:**
-
-```
-streamlit
-yfinance
-pandas
-numpy
-plotly
-requests
-```
-
----
-
 ## 🖥️ Usage
 
 Run the app using:
