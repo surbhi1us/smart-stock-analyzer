@@ -62,8 +62,8 @@ The app also includes a sentiment and news section, a correlations section, a Mo
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/stockport-stock-analyzer.git
-cd stockport-stock-analyzer
+git clone https://github.com/surbhi1us/smart-stock-analyzer.git
+cd smart-stock-analyzer
 ```
 
 ### 2. Create a virtual environment
