@@ -1,0 +1,406 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+#MainMenu, footer, header {visibility: hidden;}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body, .stApp {
+    background: #09090b;
+    color: #e4e4e7;
+    font-family: 'DM Sans', sans-serif;
+}
+
+/* Reduce Streamlit top whitespace */
+.block-container {
+    padding-top: 0.75rem !important;
+    padding-bottom: 1.5rem !important;
+}
+
+section[data-testid="stMain"] > div {
+    padding-top: 0rem !important;
+}
+
+div[data-testid="stMainBlockContainer"] {
+    padding-top: 0.75rem !important;
+}
+
+/* Grain overlay */
+.stApp::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.22;
+}
+
+/* Sidebar */
+section[data-testid="stSidebar"] {
+    background: #111113;
+    border-right: 1px solid #27272a;
+}
+
+section[data-testid="stSidebar"] * {
+    font-family: 'DM Sans', sans-serif;
+}
+
+/* Masthead */
+.masthead {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 1.2rem 0 1rem 0;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #27272a;
+}
+
+.masthead-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem;
+    font-weight: 400;
+    color: #fafafa;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin: 0;
+}
+
+.masthead-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #71717a;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding-bottom: 0.2rem;
+}
+
+/* Stock chip in sidebar */
+.stock-chip {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    background: #18181b;
+    border: 1px solid #3f3f46;
+    color: #e4e4e7;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+/* Section labels */
+.section-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #52525b;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+/* Winner card */
+.winner-card {
+    background: linear-gradient(135deg, #18181b 0%, #1c1c1f 100%);
+    border: 1px solid #3f3f46;
+    border-top: 3px solid #d4af37;
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.winner-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 70%);
+}
+
+.winner-ticker {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem;
+    color: #d4af37;
+    line-height: 1;
+}
+
+.winner-label {
+    font-size: 0.7rem;
+    color: #71717a;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.25rem;
+}
+
+.winner-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    color: #fafafa;
+}
+
+/* Rank table */
+.rank-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+}
+
+.rank-table th {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: #52525b;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid #27272a;
+    text-align: left;
+}
+
+.rank-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #1c1c1f;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    transition: background 0.15s ease;
+}
+
+.rank-table tr:hover td {
+    background: #18181b;
+}
+
+.rank-num {
+    color: #52525b;
+    font-weight: 500;
+}
+
+.rank-1 .rank-num { color: #d4af37; }
+.rank-2 .rank-num { color: #a1a1aa; }
+.rank-3 .rank-num { color: #c2844b; }
+
+.rank-ticker {
+    color: #fafafa;
+    font-weight: 500;
+}
+
+.pos { color: #4ade80; }
+.neg { color: #f87171; }
+.neu { color: #a1a1aa; }
+
+
+/* Metric cards */
+.metric-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.metric-card {
+    background: #17171a;
+    border: 1px solid #202024;
+    border-radius: 8px;
+    padding: 1.2rem 1.5rem;
+    position: relative;
+    transition: border-color 0.2s;
+}
+
+.metric-card:hover {
+    border-color: #52525b;
+}
+
+.metric-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: #52525b;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.metric-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.4rem;
+    color: #fafafa;
+    font-weight: 500;
+}
+
+.metric-delta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+}
+
+/* Chatbot */
+.chat-container {
+    background: #111113;
+    border: 1px solid #27272a;
+    border-radius: 8px;
+    padding: 1.5rem;
+    max-height: 420px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+}
+
+.chat-msg-user {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.75rem;
+}
+
+.chat-msg-ai {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 0.75rem;
+}
+
+.chat-bubble-user {
+    background: #27272a;
+    color: #fafafa;
+    border-radius: 12px 12px 2px 12px;
+    padding: 0.6rem 1rem;
+    max-width: 75%;
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+
+.chat-bubble-ai {
+    background: #18181b;
+    border: 1px solid #3f3f46;
+    color: #e4e4e7;
+    border-radius: 12px 12px 12px 2px;
+    padding: 0.6rem 1rem;
+    max-width: 80%;
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+.chat-sender {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+}
+
+.chat-sender-user { color: #71717a; }
+.chat-sender-ai { color: #d4af37; }
+
+/* Divider */
+.divider {
+    border: none;
+    border-top: 1px solid #27272a;
+    margin: 2rem 0;
+}
+
+/* Stagger animation */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate { animation: fadeUp 0.4s ease forwards; }
+
+/* Streamlit overrides */
+.stButton > button {
+    background: #18181b;
+    color: #e4e4e7;
+    border: 1px solid #3f3f46;
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.5rem 1.2rem;
+    transition: all 0.15s ease;
+    letter-spacing: 0.02em;
+}
+
+.stButton > button:hover {
+    background: #27272a;
+    border-color: #52525b;
+    color: #fafafa;
+}
+
+.stButton > button[kind="primary"] {
+    background: #d4af37;
+    color: #09090b;
+    border-color: #d4af37;
+    font-weight: 600;
+}
+
+.stButton > button[kind="primary"]:hover {
+    background: #e6c84f;
+    border-color: #e6c84f;
+}
+
+.stTextInput > div > div > input,
+.stSelectbox > div > div > div,
+.stNumberInput > div > div > input {
+    background: #18181b;
+    border: 1px solid #3f3f46;
+    color: #e4e4e7;
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.stDateInput > div > div > input {
+    background: #18181b;
+    border: 1px solid #3f3f46;
+    color: #e4e4e7;
+}
+
+.stAlert {
+    background: #18181b;
+    border: 1px solid #3f3f46;
+    color: #e4e4e7;
+    border-radius: 6px;
+}
+
+.stTabs [data-baseweb="tab-list"] {
+    background: transparent;
+    gap: 0;
+    border-bottom: 1px solid #27272a;
+}
+
+.stTabs [data-baseweb="tab"] {
+    background: transparent;
+    color: #71717a;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid transparent;
+    padding: 0.8rem 1.25rem;
+}
+
+.stTabs [aria-selected="true"] {
+    color: #fafafa;
+    border-bottom-color: #f4d03f;
+    background: transparent;
+}
+
+.stDataFrame {
+    background: #111113;
+}
+
+[data-testid="stMetric"] {
+    background: #18181b;
+    border: 1px solid #27272a;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+[data-testid="stMetricLabel"] {
+    font-size: 0.7rem;
+    color: #71717a;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+[data-testid="stMetricValue"] {
+    font-family: 'JetBrains Mono', monospace;
+    color: #fafafa;
+}

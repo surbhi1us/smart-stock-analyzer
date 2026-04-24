@@ -1,150 +1,226 @@
+# StockPort Stock Analyzer
 
-# 📈 Smart Stock Analyzer
-
-**Smart Stock Analyzer** is an interactive Streamlit web application that enables investors to **search, analyze, compare, and rank stocks** using live market data and goal-driven investment logic.
-It combines performance metrics, risk analysis, visual insights, and Monte Carlo simulations to support **data-driven investment decisions** through a clean, user-friendly interface.
+StockPort is a Streamlit-based stock analysis app built to help users compare multiple stocks in one place. It lets the user search stocks, create a small portfolio, analyze performance based on a chosen goal, and explore charts, sentiment, correlations, Monte Carlo scenarios, and simple AI-based explanations. The main idea behind this project was to make stock analysis easier to understand for beginners instead of showing only technical finance metrics.
 
 ---
 
-## 🚀 Features
+## Project Overview
 
-### 🔍 Live Stock Discovery
+This project compares selected stocks using historical Yahoo Finance data and ranks them based on one of three goals:
 
-* Search stocks by **company name or ticker symbol**
-* Powered by **Yahoo Finance** with fallback search logic
+- Balanced (risk-adjusted performance using Sharpe ratio)
+- Maximum return
+- Minimum risk
 
-### 📂 Portfolio Management
-
-* Add and remove multiple stocks dynamically
-* Persistent session-based stock selection
-
-### 🎯 Goal-Based Analysis
-
-Choose the best stock based on:
-
-* **Balanced (Risk-Adjusted)** – Sharpe Ratio
-* **Maximum Return**
-* **Minimum Risk**
-
-### 📊 Performance & Risk Metrics
-
-* Total Return (%)
-* Annualized Volatility (%)
-* Sharpe Ratio
-* Final Portfolio Value
-* Absolute Gain / Loss
-
-### 📈 Interactive Visualizations
-
-* Portfolio growth curves over time
-* Ranked comparison table of all stocks
-* Correlation heatmap for diversification insights
-* Monte Carlo simulations for future price uncertainty
-
-### 🎨 User-Friendly UI
-
-* Dark gradient theme
-* Real-time progress feedback
-* Clean metric cards and visual hierarchy
+The app also includes a sentiment and news section, a correlations section, a Monte Carlo simulation tab, and an AI assistant that explains metrics in simple words.
 
 ---
 
-## 📌 Installation
+## Features
 
-### 1️⃣ Clone the repository
+- Search stocks by company name or ticker
+- Add and remove stocks from a portfolio in the sidebar
+- Analyze stocks based on a selected investment goal
+- View the top-ranked stock in a summary card
+- Compare all selected stocks in a ranked table
+- Explore portfolio growth curves
+- See recent news sentiment using VADER sentiment analysis
+- Check stock return correlations
+- Run a 1-year Monte Carlo simulation
+- Ask the AI assistant beginner-friendly finance questions
+
+---
+
+## Tech Stack
+
+- Python
+- Streamlit
+- yfinance
+- pandas
+- numpy
+- plotly
+- requests
+- nltk
+- openai-compatible client for Groq API
+
+---
+
+## Project Structure
 
 ```bash
-git clone https://github.com/surbhi1us/smart-stock-analyzer.git
-cd smart-stock-analyzer
+.
+├── app.py
+├── style.css
+├── requirements.txt
+└── README.md
 ```
 
-### 2️⃣ Create & activate a virtual environment (recommended)
+---
+
+## Installation
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/stockport-stock-analyzer.git
+cd stockport-stock-analyzer
+```
+
+### 2. Create a virtual environment
 
 ```bash
 python -m venv venv
-source venv/bin/activate      # macOS / Linux
-venv\Scripts\activate         # Windows
 ```
 
-### 3️⃣ Install dependencies
+### 3. Activate the virtual environment
+
+On Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+On macOS / Linux:
+
+```bash
+source venv/bin/activate
+```
+
+### 4. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## 🖥️ Usage
+---
 
-Run the app using:
+## requirements.txt
+
+Use the following dependencies:
+
+```txt
+streamlit>=1.28.0
+yfinance>=0.2.32
+pandas>=2.0.0
+numpy>=1.24.0
+plotly>=5.17.0
+openai>=1.0.0
+requests>=2.31.0
+nltk>=3.8.1
+```
+
+---
+
+## Running the App
+
+Start the app with:
 
 ```bash
 streamlit run app.py
 ```
 
-### Workflow
+Then open the local URL shown in the terminal, usually:
 
-1. Search stocks via sidebar
-2. Add multiple stocks to compare
-3. Set investment amount, date range, and goal
-4. Click **“ANALYZE & PICK BEST”**
-5. Explore rankings, metrics, and simulations via tabs
+```bash
+http://localhost:8501
+```
 
 ---
 
-## 📊 Analysis Tabs
+## How to Use
 
-| Tab              | Description                                |
-| ---------------- | ------------------------------------------ |
-| 📈 Growth Curves | Portfolio value trends over time           |
-| 📊 All Stocks    | Ranked comparison by return, risk & Sharpe |
-| 🔗 Correlations  | Heatmap showing stock return correlations  |
-| 🎲 Monte Carlo   | 1-year simulated price scenarios           |
-
----
-
-## ⚡ Tech Stack
-
-* **Python**
-* **Streamlit** – Interactive web UI
-* **yfinance** – Real-time & historical stock data
-* **Plotly** – Interactive visualizations
-* **Pandas & NumPy** – Financial calculations
-* **Requests** – Live ticker search
+1. Search a company name or ticker from the sidebar
+2. Add one or more stocks to the portfolio
+3. Choose the investment amount
+4. Select the analysis start date
+5. Choose the investment goal
+6. Click **Run Analysis**
+7. Explore the results using the tabs
 
 ---
 
-## ⚠️ Important Notes
+## Tabs in the App
 
-* Internet connection required for live data
-* Yahoo Finance may throttle excessive requests
-* Monte Carlo results are **probabilistic**, not financial advice
+### Overview
+Shows the top stock, key summary metrics, market mood, and one short insight.
 
----
+### Growth Curves
+Shows how the investment would have grown over time for each selected stock.
 
-## 🧠 Planned Enhancements (Roadmap)
+### Sentiment & News
+Shows overall news sentiment, stock-wise sentiment scores, and recent headlines.
 
-* 🔢 **Stock Ranking System** (Top-N ranking instead of only best pick)
-* 🤖 **AI Chatbot** for:
+### Correlations
+Shows how strongly the selected stocks move together.
 
-  * Stock explanations
-  * Metric interpretation
-  * Beginner guidance
-* 🖱️ Enhanced hover tooltips & UX micro-interactions
-* 📊 Portfolio-level optimization (multi-asset allocation)
-* 🔐 User authentication & saved portfolios
-* 🌍 International market support
+### Monte Carlo Simulation
+Shows possible future paths for the best-ranked stock using historical return behavior.
 
----
-
-## 📌 License
-
-MIT License © 2026
+### AI Assistant
+Lets the user ask basic questions about metrics, results, and investment concepts in simple language.
 
 ---
 
-## 🔗 References
+## Notes
 
-* Yahoo Finance (via `yfinance`)
-* Streamlit Documentation
-* Plotly Python Docs
+- This app uses Yahoo Finance data through `yfinance`
+- News sentiment is calculated using NLTK VADER
+- The AI assistant needs a valid `GROQ_API_KEY`
+- Monte Carlo simulation is only a probabilistic scenario tool, not a prediction
+- This project is for learning and analysis purposes only, not financial advice
 
 ---
+
+## API Key Setup
+
+To use the AI assistant, set your Groq API key as an environment variable.
+
+On Windows PowerShell:
+
+```powershell
+$env:GROQ_API_KEY="your_api_key_here"
+streamlit run app.py
+```
+
+On macOS / Linux:
+
+```bash
+export GROQ_API_KEY="your_api_key_here"
+streamlit run app.py
+```
+
+---
+
+## What I Learned
+
+While building this project, I worked on:
+
+- using Streamlit for interactive dashboards
+- fetching and cleaning stock data
+- comparing return and risk metrics
+- using sentiment analysis on financial news
+- designing a cleaner custom UI with CSS
+- adding an AI assistant with external API support
+
+---
+
+## Future Improvements
+
+- Better portfolio-level analysis
+- Export report as PDF or CSV
+- More detailed stock explanations
+- Better mobile responsiveness
+- Save portfolio choices between sessions
+- Add Indian stock market specific enhancements
+
+---
+
+## Disclaimer
+
+This project is made for educational purposes only. It should not be used as direct investment advice.
+
+---
+
+## License
+
+MIT License
