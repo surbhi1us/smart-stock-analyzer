@@ -2,6 +2,8 @@
 
 StockPort is a Streamlit-based stock analysis app built to help users compare multiple stocks in one place. It lets the user search stocks, create a small portfolio, analyze performance based on a chosen goal, and explore charts, sentiment, correlations, Monte Carlo scenarios, and simple AI-based explanations. The main idea behind this project was to make stock analysis easier to understand for beginners instead of showing only technical finance metrics.
 
+**Live App:** [StockPort Stock Analyzer · Streamlit](https://stockport-analyzer.streamlit.app/)
+
 ---
 
 ## Project Overview
